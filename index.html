@@ -27,13 +27,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
-            emailjs.init('YOUR_USER_ID'); // Ganti dengan user ID EmailJS Anda
+            emailjs.init('2oGsCbSedW-H7Wn7J'); // Ganti dengan user ID EmailJS Anda
         })();
 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+            emailjs.send('service_qq2gj3r', 'template_y4r517u', {
                 from_name: document.getElementById('name').value,
                 from_email: document.getElementById('email').value,
                 subject: document.getElementById('subject').value,
