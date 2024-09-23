@@ -6,78 +6,112 @@
 }
 
 body {
-    background-color: #f0f0f0;
+    background-color: #111;
+    color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .container {
-    width: 800px;
-    height: 500px;
+    width: 100%;
+    max-width: 800px;
+    background-color: #1c1c1c;
     display: flex;
-    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.8);
     border-radius: 10px;
 }
 
 .contact-box {
     display: flex;
     width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
 }
 
 .left {
     flex: 1;
-    background: url('https://source.unsplash.com/800x800/?contact,communication') no-repeat center;
+    background: url('https://source.unsplash.com/800x800/?instagram,followers') no-repeat center;
     background-size: cover;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
 }
 
 .right {
     flex: 1.5;
-    background: white;
-    padding: 40px;
-    border-radius: 0 10px 10px 0;
+    width: 100%;
+    text-align: center;
 }
 
-h2 {
+h1 {
     margin-bottom: 20px;
+    font-size: 24px;
     font-weight: 600;
-    color: #333;
+    color: #fff;
+}
+
+p {
+    margin-bottom: 20px;
+    color: #ddd;
+    font-size: 16px;
 }
 
 .field {
     width: 100%;
-    border: 2px solid #ddd;
-    padding: 10px;
+    border: 2px solid #333;
+    padding: 15px;
     margin-bottom: 20px;
     font-size: 16px;
+    background-color: #222;
+    color: #fff;
     border-radius: 5px;
     outline: none;
-    transition: 0.3s;
+    transition: border 0.3s ease;
 }
 
 .field:focus {
-    border-color: #a29bfe;
-}
-
-textarea {
-    min-height: 150px;
+    border-color: #6c5ce7;
 }
 
 .btn {
     width: 100%;
+    padding: 15px;
     background-color: #6c5ce7;
-    color: white;
-    padding: 10px;
+    color: #fff;
     font-size: 18px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background 0.3s ease;
 }
 
 .btn:hover {
     background-color: #5a54c5;
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .left {
+        flex: 1;
+        height: auto;
+        margin-bottom: 0;
+        border-radius: 10px 0 0 10px;
+    }
+
+    .right {
+        flex: 1.5;
+        padding: 40px;
+        border-radius: 0 10px 10px 0;
+        background-color: #1c1c1c;
+    }
 }
